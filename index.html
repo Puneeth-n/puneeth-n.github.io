@@ -16,13 +16,15 @@
         }
 
         :root[data-theme="dark"] {
-            --bg-color: #1e1e1e;
-            --text-color: #00ff00;
-            --heading-color: #00ff00;
-            --link-color: #00ff00;
-            --link-border: #00ff00;
-            --link-hover-bg: #003300;
-            --link-hover-color: #00ff00;
+            --bg-color: #1a1a1a;
+            --text-color: #f8f8f2;
+            --heading-color: #ff79c6;
+            --link-color: #8be9fd;
+            --link-border: #8be9fd;
+            --link-hover-bg: #44475a;
+            --link-hover-color: #f8f8f2;
+            --prompt-color: #50fa7b;
+            --path-color: #bd93f9;
         }
 
         * {
@@ -33,7 +35,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
@@ -47,12 +49,13 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            text-align: left;
         }
 
         .profile {
             margin-bottom: 2rem;
+            width: 100%;
         }
 
         .profile h1 {
@@ -70,7 +73,7 @@
         .social-links {
             display: flex;
             gap: 1.5rem;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .social-links a {
@@ -111,6 +114,24 @@
             color: var(--link-hover-color);
         }
 
+        .terminal-prompt {
+            display: none;
+        }
+
+        [data-theme="dark"] .terminal-prompt {
+            display: inline;
+            color: var(--prompt-color);
+        }
+
+        .terminal-path {
+            display: none;
+        }
+
+        [data-theme="dark"] .terminal-path {
+            display: inline;
+            color: var(--path-color);
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 1rem;
@@ -143,6 +164,8 @@
     </button>
     <div class="container">
         <div class="profile">
+            <span class="terminal-prompt">➜</span>
+            <span class="terminal-path"> ~/puneeth</span>
             <h1>Puneeth</h1>
             <p>All things AWS and Infra</p>
             <div class="social-links">
