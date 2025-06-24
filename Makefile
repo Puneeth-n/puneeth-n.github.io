@@ -1,6 +1,6 @@
 # Makefile for local development server
 
-.PHONY: start stop restart status
+.PHONY: start stop restart status docker-build docker-up docker-down docker-clean
 
 # Default port for the server
 PORT := 8000
@@ -40,9 +40,28 @@ open:
 # Help command
 help:
 	@echo "Available commands:"
-	@echo "  make start   - Start the local development server"
-	@echo "  make stop    - Stop the local development server"
-	@echo "  make restart - Restart the local development server"
-	@echo "  make status  - Check if server is running"
-	@echo "  make open    - Open website in default browser"
-	@echo "  make help    - Show this help message" 
+	@echo "  make start        - Start the local development server (Python)"
+	@echo "  make stop         - Stop the local development server (Python)"
+	@echo "  make restart      - Restart the local development server (Python)"
+	@echo "  make status       - Check if server is running (Python)"
+	@echo "  make open         - Open website in default browser"
+	@echo "  make docker-up    - Start the Docker container (Python server)"
+	@echo "  make docker-down  - Stop the Docker container"
+	@echo "  make docker-clean - Remove Docker resources for this project"
+	@echo "  make help         - Show this help message"
+
+# Docker targets
+
+docker-up:
+	@echo "Starting Docker container..."
+	docker compose up -d
+
+
+docker-down:
+	@echo "Stopping Docker container..."
+	docker compose down
+
+
+docker-clean:
+	@echo "Removing Docker resources..."
+	docker compose down --rmi all --volumes --remove-orphans 
